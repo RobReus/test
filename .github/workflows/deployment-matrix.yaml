@@ -1,0 +1,18 @@
+---
+name: "Deployment matrix"
+
+on:
+  workflow_dispatch:
+  push:
+      branches: ["main"]
+
+jobs:
+  deploy:
+    name: deploy
+    strategy:
+      matrix:
+        target: [tst, acc, prd]
+    uses: robreus/test/.github/workflows/reusable.yaml@main
+    with:
+      env: ${{ matrix.target }}
+    secrets: inherit
