@@ -4,16 +4,16 @@ name: "Reusable workflow"
 on:
   workflow_call:
     inputs:
-      env-name:
+      env:
         required: true
         type: string
 
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env-name }}
+    environment: ${{ inputs.env }}
     steps:
       - name: Echo env name
-        run: echo "environment: ${{ inputs.env-name }}"
+        run: echo "environment: ${{ inputs.env }}"
       - name: Echo secret key
         run: echo "key: ${{ secret.key }}"
