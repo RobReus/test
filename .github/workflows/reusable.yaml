@@ -16,4 +16,4 @@ jobs:
       - name: Echo env name
         run: echo environment is ${{ inputs.env }}
       - name: Echo secret key
-        run: echo key is ${{ secret.key }}
+        run: echo key is ${{ secrets.key }}
