@@ -9,7 +9,6 @@ on:
 jobs:
   tst:
     name: tst
-    runs-on: "ubuntu-latest"
     uses: robreus/test/.github/workflows/reusable.yaml@main
     with:
       env: tst
@@ -18,7 +17,6 @@ jobs:
   acc:
     name: acc
     needs: tst
-    runs-on: "ubuntu-latest"
     uses: robreus/test/.github/workflows/reusable.yaml@main
     with:
       env: acc
@@ -27,7 +25,6 @@ jobs:
   prd:
     name: prd
     needs: acc
-    runs-on: "ubuntu-latest"
     uses: robreus/test/.github/workflows/reusable.yaml@main
     with:
       env: prd
