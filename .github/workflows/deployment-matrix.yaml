@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         target: [tst, acc, prd]
+      max-parallel: 1
     uses: robreus/test/.github/workflows/reusable.yaml@main
     with:
       env: ${{ matrix.target }}
