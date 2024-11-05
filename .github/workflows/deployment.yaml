@@ -1,0 +1,34 @@
+---
+name: "Deployment"
+
+on:
+  workflow_dispatch:
+  push:
+      branches: ["main"]
+
+jobs:
+  tst:
+    name: tst
+    runs-on: "ubuntu-latest"
+    uses: robreus/test/.github/workflows/reusable.yaml@main
+    with:
+      env-name: tst
+    secrets: inherit
+
+  acc:
+    name: acc
+    needs: tst
+    runs-on: "ubuntu-latest"
+    uses: robreus/test/.github/workflows/reusable.yaml@main
+    with:
+      env-name: acc
+    secrets: inherit
+
+  prd:
+    name: prd
+    needs: acc
+    runs-on: "ubuntu-latest"
+    uses: robreus/test/.github/workflows/reusable.yaml@main
+    with:
+      env-name: prd
+    secrets: inherit
